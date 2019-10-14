@@ -1,0 +1,32 @@
+<html>
+    <body>
+        <canvas id="canvas" width="800" height="600"></canvas>
+        <script src="./robot-arm.js"></script>
+        <script>
+            // Robotarm bibliotheek inladen
+            var canvas = document.getElementById("canvas");
+            var robotArm = new RobotArm(canvas);
+            
+            // Het level inladen
+            robotArm.loadLevel("exercise 9");
+            
+            // Jou instructies volgen hier
+            for (var a = 1; a < 5; a++) {
+                for (var i = 0; i < a; i++) {
+                    robotArm.grab();
+                    for (var s = 0; s < 5; s++) {
+                        robotArm.moveRight();
+                    }
+                    robotArm.drop();
+                    for (var t = 0; t < 5; t++) {
+                        robotArm.moveLeft();
+                    }
+                }
+                robotArm.moveRight();
+            }
+            
+            // De door jou opgegeven instructies uitvoeren
+            robotArm.run();
+        </script>
+    </body>
+</html>
