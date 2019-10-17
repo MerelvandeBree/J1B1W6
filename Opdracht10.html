@@ -11,7 +11,20 @@
             robotArm.loadLevel("exercise 10");
             
             // Jou instructies volgen hier
-            
+            var amount1=9
+            var amount2=8
+            for (var a = 0; a < 5; a++) {
+                    robotArm.grab();
+                    for (var t = 0; t < amount1; t++) {
+                        robotArm.moveRight();
+                        }
+                    robotArm.drop();
+                    for (var b = 0; b < amount2; b++) {
+                    robotArm.moveLeft();
+                }
+                amount1-=2
+                amount2-=2
+            }
             
             // De door jou opgegeven instructies uitvoeren
             robotArm.run();

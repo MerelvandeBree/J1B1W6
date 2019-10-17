@@ -1,0 +1,40 @@
+<html>
+    <body>
+        <canvas id="canvas" width="800" height="600"></canvas>
+        <script src="./robot-arm.js"></script>
+        <script>
+            // Robotarm bibliotheek inladen
+            var canvas = document.getElementById("canvas");
+            var robotArm = new RobotArm(canvas);
+            
+            // Het level inladen
+            robotArm.randomLevel( 1, 8);
+            
+            // Jou instructies volgen hier
+            var p=0;
+            
+            robotArm.speed = 1000;
+            robotArm.grab();
+            color = robotArm.scan();
+            console.log(p);
+            while(color!=null){
+                console.log('kleur: ' + color);
+                for(i=1; i<=(1+p); i++){
+                    robotArm.moveRight();
+                }
+                robotArm.drop();
+                console.log(p);
+                for(b=1; b<=(1+p); b++){
+                    robotArm.moveLeft();
+                }
+                robotArm.grab();
+                color = robotArm.scan();
+                p++;
+                console.log(p);
+            }
+            
+            // De door jou opgegeven instructies uitvoeren
+            robotArm.run();
+        </script>
+    </body>
+</html>
